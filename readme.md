@@ -41,7 +41,9 @@ The following fragment shows an example configuration of the `serviceavailabilit
             <location name="/" handler="welcome-content"/>
             <filter-ref name="server-header"/>
             <filter-ref name="x-powered-by-header"/>
-            <filter-ref name="service-availability"/> <!-- add a reference to the filter here -->
+            
+             <!-- add a reference to the filter here -->
+            <filter-ref name="service-availability"/>
         </host>
     </server>
     <servlet-container name="default">
