@@ -15,6 +15,10 @@ is ready when in fact it is not.
 
 ### Build
 
+```
+mvn clean package
+```
+
 ### Deploy
 
 Connect to jboss-cli via `$WILDFLY_HOME/bin/jboss-cli.sh`
