@@ -130,13 +130,11 @@ public class ServiceAvailabilityHandler implements HttpHandler {
 
     public void handleNotification(Notification notification, Object handback) {
 
-      boolean matchesObjectName = notification.getSource().toString().equals(objectName);
-      if (!matchesObjectName) {
+      if (!notification.getSource().toString().equals(objectName)) {
         return;
       }
 
-      boolean deploymentDeployed = DEPLOYMENT_DEPLOYED.equals(notification.getType());
-      if (!deploymentDeployed) {
+      if (!DEPLOYMENT_DEPLOYED.equals(notification.getType())) {
         return;
       }
 
