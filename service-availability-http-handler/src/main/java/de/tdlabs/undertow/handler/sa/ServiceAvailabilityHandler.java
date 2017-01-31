@@ -131,14 +131,17 @@ public class ServiceAvailabilityHandler implements HttpHandler {
     public void handleNotification(Notification notification, Object handback) {
 
       boolean matchesObjectName = notification.getSource().toString().equals(objectName);
-      boolean deploymentDeployed = DEPLOYMENT_DEPLOYED.equals(notification.getType());
-      boolean ready = matchesObjectName && deploymentDeployed;
-
-      if (ready) {
-        log.warn("Detected application availability changed to ready! Marking the application as ready.");
+      if (!matchesObjectName) {
+        return;
       }
 
-      applicationReady.set(ready);
+      boolean deploymentDeployed = DEPLOYMENT_DEPLOYED.equals(notification.getType());
+      if (!deploymentDeployed) {
+        return;
+      }
+
+      log.warn("Detected application availability changed to ready! Marking the application as ready.");
+      applicationReady.set(true);
     }
   }
 }
